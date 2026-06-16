@@ -14,9 +14,12 @@ namespace zad2_PavlovMaksim
 
         public List<Contact> GetAllContacts()
         {
-            return contacts.ToList();
+            return contacts;
         }
-
+        public void ListBookClear()
+        {
+            contacts.Clear();
+        }
         public List<Contact> SearchByName(string name)
         {
             List<Contact> results = new List<Contact>();

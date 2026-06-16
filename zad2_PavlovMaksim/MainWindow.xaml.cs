@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq; 
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,46 +24,20 @@ namespace zad2_PavlovMaksim
         // Загрузка контактов из файла
         private void LoadContacts()
         {
-            try
-            {
-                if (File.Exists(fileName))
-                {
-                    string[] lines = File.ReadAllLines(fileName);
-
-                    foreach (string line in lines)
-                    {
-                        if (string.IsNullOrWhiteSpace(line))
-                            continue;
-
-                        string[] parts = line.Split(';');
-
-                        if (parts.Length >= 2)
-                        {
-                            string name = parts[0].Trim();
-                            string phone = parts[1].Trim();
-
-                            if (!string.IsNullOrWhiteSpace(name))
-                            {
-                                phoneBook.AddContact(name, phone);
-                            }
-                        }
-                    }
-
-                    ShowAllContacts();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка загрузки: {ex.Message}");
-            }
+            PhoneBookLoader.Load(phoneBook, fileName);
+            ContactsListBox.ItemsSource = null;
+            ContactsListBox.Items.Clear();
+            ContactsListBox.ItemsSource = phoneBook.GetAllContacts();
         }
 
-        // Показать все контакты
+
         private void ShowAllContacts()
         {
+            ContactsListBox.ItemsSource = null;
             ContactsListBox.Items.Clear();
 
-            var allContacts = phoneBook.GetAllContacts();
+            var allContacts = phoneBook.GetAllContacts()
+                .OrderBy(c => c.Name); 
 
             foreach (var contact in allContacts)
             {
@@ -74,7 +49,6 @@ namespace zad2_PavlovMaksim
         private void Menu_Click_AddAllCon(object sender, RoutedEventArgs e)
         {
             ShowAllContacts();
-           
         }
 
         // Поиск по имени 
@@ -88,7 +62,9 @@ namespace zad2_PavlovMaksim
                 return;
             }
 
-            var results = phoneBook.SearchByName(search);
+            var results = phoneBook.SearchByName(search)
+                .OrderBy(c => c.Name)  
+                .ToList();             
 
             ContactsListBox.Items.Clear();
             foreach (var contact in results)
@@ -96,7 +72,7 @@ namespace zad2_PavlovMaksim
                 ContactsListBox.Items.Add(contact);
             }
 
-            if (results.Count == 0)
+            if (!results.Any())  
             {
                 MessageBox.Show("Ничего не найдено");
             }
@@ -106,50 +82,41 @@ namespace zad2_PavlovMaksim
             }
         }
 
-        // Добавление контакта 
+        // Добавление контакта
         private void Menu_Click_AddCon(object sender, RoutedEventArgs e)
         {
             string name = NameTextBox.Text.Trim();
             string phone = PhoneTextBox.Text.Trim();
 
-           
-            if (name == "")
+         
+            if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("Введите имя");
                 return;
             }
 
-            
-            foreach (char c in name)
-            {
-                if (char.IsDigit(c))
-                {
-                    MessageBox.Show("Имя не должно содержать цифры");
-                    return;
-                }
-            }
-
            
-            foreach (char c in phone)
+            if (name.Any(char.IsDigit))  
             {
-                if (char.IsLetter(c))
-                {
-                    MessageBox.Show("Телефон не должен содержать буквы");
-                    return;
-                }
+                MessageBox.Show("Имя не должно содержать цифры");
+                return;
             }
 
+         
+            if (phone.Any(char.IsLetter))  
+            {
+                MessageBox.Show("Телефон не должен содержать буквы");
+                return;
+            }
 
             phoneBook.AddContact(name, phone);
 
-        
             NameTextBox.Text = "";
             PhoneTextBox.Text = "";
             ShowAllContacts();
-            MessageBox.Show($"Контакт '{name}' добавлен");
         }
 
-        // Удаление контакта
+        // Удаление контакта 
         private void Menu_Click_DeleteCon(object sender, RoutedEventArgs e)
         {
             if (ContactsListBox.SelectedItem == null)
@@ -157,8 +124,20 @@ namespace zad2_PavlovMaksim
                 MessageBox.Show("Выберите контакт для удаления");
                 return;
             }
-                ShowAllContacts();
-            
+
+            var selectedContact = ContactsListBox.SelectedItem as Contact;
+            if (selectedContact != null)
+            {
+                
+                var contactToRemove = phoneBook.GetAllContacts()
+                    .FirstOrDefault(c => c.Name.Equals(selectedContact.Name, StringComparison.OrdinalIgnoreCase));
+
+                if (contactToRemove != null)
+                {
+                    phoneBook.RemoveContact(contactToRemove);
+                    ShowAllContacts();
+                }
+            }
         }
 
         // Сохранение в файл
@@ -185,8 +164,6 @@ namespace zad2_PavlovMaksim
         // Выход 
         private void Menu_Click_Exit(object sender, RoutedEventArgs e)
         {
-          
-
             Application.Current.Shutdown();
         }
 

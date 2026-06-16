@@ -9,8 +9,18 @@ namespace zad2_PavlovMaksim
 {
     class PhoneBookLoader
     {
-  
-        public static void Save(PhoneBook phoneBook, string fileName)
+        public static void Load(PhoneBook phoneBook, string fileName) //Сохранение из файла
+        {
+            phoneBook.ListBookClear();
+            StreamReader file = File.OpenText(fileName);
+            while (!file.EndOfStream)
+            {
+                string[] DataTable = file.ReadLine().Split(';');
+                phoneBook.AddContact(DataTable[0], DataTable[1]);
+            }
+            file.Close();
+        }
+            public static void Save(PhoneBook phoneBook, string fileName)
         {
             List<string> lines = new List<string>();
 
