@@ -27,7 +27,7 @@ namespace zad2_PavlovMaksim
             {
                 if (File.Exists(fileName))
                 {
-                    string[] lines = File.ReadAllLines(fileName, Encoding.UTF8);
+                    string[] lines = File.ReadAllLines(fileName);
 
                     foreach (string line in lines)
                     {
