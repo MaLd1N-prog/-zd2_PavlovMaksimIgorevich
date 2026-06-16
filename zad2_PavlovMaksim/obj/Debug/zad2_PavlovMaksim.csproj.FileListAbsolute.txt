@@ -1,0 +1,15 @@
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.csproj.AssemblyReference.cache
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\MainWindow.g.cs
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\App.g.cs
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim_MarkupCompile.cache
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim_MarkupCompile.lref
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\bin\Debug\zad2_PavlovMaksim.exe.config
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\bin\Debug\zad2_PavlovMaksim.exe
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\bin\Debug\zad2_PavlovMaksim.pdb
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\MainWindow.baml
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.g.resources
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.Properties.Resources.resources
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.csproj.GenerateResource.cache
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.csproj.CoreCompileInputs.cache
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.exe
+C:\Users\305-10\Desktop\Pavlov PR-23\zad2_PavlovMaksim\obj\Debug\zad2_PavlovMaksim.pdb

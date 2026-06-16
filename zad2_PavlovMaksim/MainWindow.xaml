@@ -1,0 +1,26 @@
+﻿<Window x:Class="zad2_PavlovMaksim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zad2_PavlovMaksim"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="ContactsListBox" HorizontalAlignment="Left" Height="274" Margin="10,135,0,0" VerticalAlignment="Top" Width="630"/>
+        <Menu HorizontalAlignment="Left" Height="124" Margin="10,6,0,0" VerticalAlignment="Top" Width="275">
+            <MenuItem Header="Вывод всех контактов" Height="40" Width="135" Click="Menu_Click_AddAllCon"/>
+            <MenuItem Header="Поиск по имени" Height="36" Width="140" Click="Menu_Click_Name"/>
+            <MenuItem Header="Добавление контакта" Height="48" Width="135" Click="Menu_Click_AddCon"/>
+            <MenuItem Header="Удаление контакта" Height="44" Width="140" Click="Menu_Click_DeleteCon"/>
+            <MenuItem Header="Сохранение в файл" Height="34" Width="135" Click="Menu_Click_Save"/>
+            <MenuItem Header="выход из программы" Height="32" Width="140" Click="Menu_Click_Exit"/>
+        </Menu>
+        <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Height="23" Margin="290,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="210"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="290,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="220"/>
+        <Label Content="Введите имя контакта для добавления и номер" HorizontalAlignment="Left" Margin="290,65,0,0" VerticalAlignment="Top" Width="285" Height="27"/>
+        <Label Content="Введите имя контакта для поиска" HorizontalAlignment="Left" Margin="290,10,0,0" VerticalAlignment="Top" Width="210" Height="27"/>
+        <TextBox x:Name="PhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="525,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="220"/>
+
+    </Grid>
+</Window>
